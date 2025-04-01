@@ -1,0 +1,21 @@
+#define BUTTON_PIN 5  // GPIO5 (D1 on NodeMCU)
+int buttonCount = 0;
+bool lastButtonState = HIGH;
+
+void setup() {
+    pinMode(BUTTON_PIN, INPUT_PULLUP);  // Enable internal pull-up resistor
+    Serial.begin(115200);
+}
+
+void loop() {
+    bool buttonState = digitalRead(BUTTON_PIN);
+
+    if (buttonState == LOW && lastButtonState == HIGH) {
+        buttonCount++;  // Increment count when button is pressed
+        Serial.print("Button Pressed: ");
+        Serial.println(buttonCount);
+        delay(200);  // Debounce delay
+    }
+
+    lastButtonState = buttonState;
+}
