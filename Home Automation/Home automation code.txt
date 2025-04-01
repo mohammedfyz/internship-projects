@@ -1,0 +1,25 @@
+#define BLYNK_TEMPLATE_ID "TMPL3_yMuM0Rg"
+#define BLYNK_TEMPLATE_NAME "control led"
+#define BLYNK_AUTH_TOKEN "LXSqPTzz4OH6FPAN3v2SuUwqRQ2sSWMR"
+
+
+#define BLYNK_PRINT Serial
+#include <ESP8266WiFi.h>  
+#include <BlynkSimpleEsp8266.h>
+ 
+
+char auth[] = BLYNK_AUTH_TOKEN;
+char ssid[] = "Airtel_moha_4021";  // Enter your Wifi Username
+char pass[] = "air78794";  // Enter your Wifi password
+
+int ledpin = D4;
+void setup()
+{     
+  Serial.begin(115200);
+  Blynk.begin(auth, ssid, pass);    
+  pinMode(ledpin,OUTPUT);
+}
+
+void loop()
+{
+  Blynk.run(); 
